@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114211762054162284}
   m_Layer: 0
   m_Name: yuki_01
-  m_TagString: Untagged
+  m_TagString: yukiAbove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cf71a9c38eac243bf19df1db3e6f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 1
+  instantiateViewportDistance: 0.5
 --- !u!212 &212086224070861336
 SpriteRenderer:
   m_ObjectHideFlags: 1
