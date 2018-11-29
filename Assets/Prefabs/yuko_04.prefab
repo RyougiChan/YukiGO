@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4424629435858686}
   - component: {fileID: 212371105170440752}
-  - component: {fileID: 61439354418981680}
   m_Layer: 0
   m_Name: v_block
   m_TagString: Untagged
@@ -37,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4241883766297008}
   - component: {fileID: 212049222230897994}
-  - component: {fileID: 68206393416919688}
   m_Layer: 0
   m_Name: yuko_04
   m_TagString: yuki
@@ -54,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4901062187089930}
   - component: {fileID: 114672939894598614}
+  - component: {fileID: 60038005894642794}
   m_Layer: 0
   m_Name: yuko_04
   m_TagString: yukiAbove
@@ -94,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444164401106428}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.31, y: 0, z: 0}
   m_LocalScale: {x: 0.14999998, y: 0.14999998, z: 1}
   m_Children:
   - {fileID: 4424629435858686}
@@ -102,12 +101,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61439354418981680
-BoxCollider2D:
+--- !u!60 &60038005894642794
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1030438594065086}
+  m_GameObject: {fileID: 1444164401106428}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -117,44 +116,54 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.63, y: 15.22}
-    newSize: {x: 0.63, y: 15.22}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.63, y: 15.22}
-  m_EdgeRadius: 0
---- !u!68 &68206393416919688
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1294433740145084}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
   m_Points:
-  - {x: -4.15366, y: 2.4029121}
-  - {x: -1.1316413, y: 1.9700301}
-  - {x: -0.0015238919, y: 4.8058524}
-  - {x: 1.1041293, y: 1.8780378}
-  - {x: 4.155447, y: 2.4031744}
-  - {x: 2.2281961, y: -0.0370137}
-  - {x: 4.160187, y: -2.4266026}
-  - {x: 1.0663972, y: -1.8867815}
-  - {x: 0.0020277498, y: -4.8090944}
-  - {x: -1.1281198, y: -1.9906143}
-  - {x: -4.140332, y: -2.3459487}
-  - {x: -2.1755939, y: -0.10557971}
-  - {x: -4.1607003, y: 2.4029121}
+    m_Paths:
+    - - {x: 2.6504943, y: 2.1580806}
+      - {x: 1.2245657, y: 1.342101}
+      - {x: 1.0382742, y: 1.7703379}
+      - {x: 0.64123327, y: 1.6454316}
+      - {x: 0.67237073, y: 3.3105967}
+      - {x: 0.11317888, y: 4.774124}
+      - {x: 0.10292211, y: 73.90591}
+      - {x: -0.10591665, y: 73.90474}
+      - {x: -0.12955664, y: 4.6988525}
+      - {x: -0.52905726, y: 3.3680942}
+      - {x: -0.59273654, y: 1.6448996}
+      - {x: -0.98698795, y: 1.7053262}
+      - {x: -1.184765, y: 1.3234483}
+      - {x: -2.6270068, y: 2.1680598}
+      - {x: -4.263735, y: 2.4516726}
+      - {x: -3.1863256, y: 1.1093572}
+      - {x: -1.8014283, y: 0.33208144}
+      - {x: -1.974072, y: -0.037271313}
+      - {x: -1.8174524, y: -0.3131428}
+      - {x: -3.298097, y: -1.2404402}
+      - {x: -4.1511497, y: -2.4503033}
+      - {x: -2.596156, y: -2.2116961}
+      - {x: -1.1795619, y: -1.4110096}
+      - {x: -1.0193715, y: -1.763132}
+      - {x: -0.62808603, y: -1.7093681}
+      - {x: -0.48702726, y: -3.4073875}
+      - {x: 0.015192035, y: -4.9136395}
+      - {x: 0.6276378, y: -3.4120853}
+      - {x: 0.5962993, y: -1.7374127}
+      - {x: 1.0384196, y: -1.758653}
+      - {x: 1.2242669, y: -1.3987603}
+      - {x: 2.6691864, y: -2.2521179}
+      - {x: 4.2554393, y: -2.358509}
+      - {x: 3.3051417, y: -1.1087278}
+      - {x: 1.7677311, y: -0.39159226}
+      - {x: 2.0570893, y: -0.018920107}
+      - {x: 1.8330387, y: 0.30557787}
+      - {x: 3.256614, y: 1.1408452}
+      - {x: 4.1611767, y: 2.4520836}
 --- !u!114 &114672939894598614
 MonoBehaviour:
   m_ObjectHideFlags: 1

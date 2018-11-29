@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4250023059664888}
   - component: {fileID: 212952260277312880}
-  - component: {fileID: 61903201508921692}
   m_Layer: 0
   m_Name: v_block
   m_TagString: Untagged
@@ -37,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4046628883688830}
   - component: {fileID: 212105865162936224}
-  - component: {fileID: 68445418199298424}
   m_Layer: 0
   m_Name: yuki_03
   m_TagString: yuki
@@ -54,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4062587146924026}
   - component: {fileID: 114228640993957504}
+  - component: {fileID: 60009502146685812}
   m_Layer: 0
   m_Name: yuko_03
   m_TagString: yukiAbove
@@ -81,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1437344165732292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.4, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4250023059664888}
@@ -102,12 +101,12 @@ Transform:
   m_Father: {fileID: 4062587146924026}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61903201508921692
-BoxCollider2D:
+--- !u!60 &60009502146685812
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1049426265750678}
+  m_GameObject: {fileID: 1437344165732292}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -117,56 +116,36 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.63, y: 15.22}
-    newSize: {x: 0.63, y: 15.22}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.63, y: 15.22}
-  m_EdgeRadius: 0
---- !u!68 &68445418199298424
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1385310810571670}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
   m_Points:
-  - {x: -4.15366, y: 2.4029121}
-  - {x: -2.1604948, y: 2.488911}
-  - {x: -1.3980936, y: 2.4789886}
-  - {x: -1.0608394, y: 3.019087}
-  - {x: -0.0015238919, y: 4.8058524}
-  - {x: 1.0045067, y: 2.9874432}
-  - {x: 1.400717, y: 2.4533129}
-  - {x: 2.0686443, y: 2.4222546}
-  - {x: 4.155447, y: 2.4031744}
-  - {x: 3.1970935, y: 0.5928182}
-  - {x: 2.8244715, y: -0.058171347}
-  - {x: 3.1494098, y: -0.532604}
-  - {x: 4.160187, y: -2.4266026}
-  - {x: 2.1320634, y: -2.375659}
-  - {x: 1.4475901, y: -2.4316416}
-  - {x: 1.0674555, y: -3.0532455}
-  - {x: 0.0020277498, y: -4.8090944}
-  - {x: -1.0641899, y: -3.0346107}
-  - {x: -1.4255698, y: -2.4957802}
-  - {x: -2.1012495, y: -2.3886364}
-  - {x: -4.140332, y: -2.3459487}
-  - {x: -3.170827, y: -0.6025226}
-  - {x: -2.9170415, y: -0.03015955}
-  - {x: -3.2191145, y: 0.5637423}
-  - {x: -4.1607003, y: 2.4029121}
+    m_Paths:
+    - - {x: 2.208467, y: 2.3697946}
+      - {x: 0.99604917, y: 3.1851685}
+      - {x: 0.11317888, y: 4.774124}
+      - {x: 0.10292211, y: 73.90591}
+      - {x: -0.10591665, y: 73.90474}
+      - {x: -0.12955664, y: 4.6988525}
+      - {x: -1.0583582, y: 3.1114125}
+      - {x: -2.222154, y: 2.4361215}
+      - {x: -4.1610084, y: 2.394536}
+      - {x: -3.277115, y: 0.6583175}
+      - {x: -3.2522259, y: -0.7109452}
+      - {x: -4.142031, y: -2.3964038}
+      - {x: -2.2152128, y: -2.407077}
+      - {x: -0.9738794, y: -3.1352026}
+      - {x: 0.006882349, y: -4.889225}
+      - {x: 0.9903883, y: -3.1398523}
+      - {x: 2.2740672, y: -2.408662}
+      - {x: 4.1527133, y: -2.423954}
+      - {x: 3.155278, y: -0.7039259}
+      - {x: 3.1720786, y: 0.7180277}
+      - {x: 4.1375723, y: 2.458261}
 --- !u!114 &114228640993957504
 MonoBehaviour:
   m_ObjectHideFlags: 1

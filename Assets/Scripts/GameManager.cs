@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -15,7 +16,11 @@ public class GameManager : MonoBehaviour {
     // public Vector3[] cameraViewportWorldPos;
     public Dictionary<string, Vector3> cameraViewportWorldPos;
     private List<GameObject> yukis;
+    private bool isGameEnd;
     public float score;
+    public Text scoreText;
+    public Text gameoverScoreText;
+    public GameObject gameoverPanel;
 
     // Use this for initialization
     void Start()
@@ -40,22 +45,24 @@ public class GameManager : MonoBehaviour {
             { "bl", Camera.main.ViewportToWorldPoint(new Vector3(0f,0f,cameraDistance)) },
             { "br", Camera.main.ViewportToWorldPoint(new Vector3(1.0f,0f,cameraDistance)) }
         };
+        InstantiateYuki();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void End()
     {
-
+        isGameEnd = true;
+        gameoverScoreText.text = score.ToString("0");
+        gameoverPanel.SetActive(true);
     }
 
-    public void SetScore(float score)
+    public void Restart()
     {
-        this.score = score;
+        SceneManager.LoadScene("MainScene");
     }
 
-    public float GetScore()
+    public void Quit()
     {
-        return score;
+        Application.Quit();
     }
 
     public void InstantiateYuki()
@@ -69,7 +76,6 @@ public class GameManager : MonoBehaviour {
         yukiAbove.tag = "yukiAbove";
         yukiBelow.tag = "yukiBelow";
         yukiBelow.transform.Rotate(new Vector3(0, 0, 180.0f));
-
     }
 
     // Get a random yuki in yuki's list
@@ -77,6 +83,26 @@ public class GameManager : MonoBehaviour {
     {
         int index = Mathf.RoundToInt(Random.Range(0, 3));
         return yukis[index];
+    }
+
+    public void SetScore(float score)
+    {
+        this.score = score;
+        scoreText.text = score.ToString("0");
+    }
+
+    public float GetScore()
+    {
+        return score;
+    }
+    public void SetIsGameEnd(bool isGameEnd)
+    {
+        this.isGameEnd = isGameEnd;
+    }
+
+    public bool GetIsGameEnd()
+    {
+        return isGameEnd;
     }
 
 }

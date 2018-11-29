@@ -14,6 +14,7 @@ public class YukiController : MonoBehaviour {
     private bool hasInstantiateYuki;
     private bool hasAddScore;
     private GameObject yuki;
+    private bool isGameEnd;
 
     void Start()
     {
@@ -25,8 +26,10 @@ public class YukiController : MonoBehaviour {
     {
         Vector3 originPos = transform.position;
         Vector3 viewportPos = Camera.main.WorldToViewportPoint(originPos);
+
+
         // Score++
-        if(!hasAddScore && gameObject.tag == "yukiAbove" && gameObject.transform.position.x < player.transform.position.x)
+        if (!hasAddScore && gameObject.tag == "yukiAbove" && gameObject.transform.position.x < player.transform.position.x)
         {
             gameManager.SetScore(gameManager.GetScore() + unitScore);
             hasAddScore = true;
@@ -42,13 +45,23 @@ public class YukiController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        // Move the gameobject
-        transform.position = new Vector3(originPos.x - speed * Time.deltaTime, originPos.y, originPos.z);
+        isGameEnd = gameManager.GetIsGameEnd();
+        if (!isGameEnd)
+        {
+            // Move the gameobject
+            transform.position = new Vector3(originPos.x - speed * Time.deltaTime, originPos.y, originPos.z);
+        }
         // Rotate the yuki
         if (null != yuki)
         {
             yuki.transform.Rotate(Vector3.back * Time.deltaTime * 30 * rotateSpeed, Space.Self);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("------- HIT A YUKI -------");
+        gameManager.End();
     }
 
 }

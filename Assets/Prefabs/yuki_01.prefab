@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4004248202327504}
   - component: {fileID: 212086224070861336}
-  - component: {fileID: 61768275657648248}
   m_Layer: 0
   m_Name: v_block
   m_TagString: Untagged
@@ -37,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4547524467674196}
   - component: {fileID: 114211762054162284}
+  - component: {fileID: 60951030724696308}
   m_Layer: 0
   m_Name: yuki_01
   m_TagString: yukiAbove
@@ -53,7 +53,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4024172134087438}
   - component: {fileID: 212531136877365356}
-  - component: {fileID: 68888435432638114}
   m_Layer: 0
   m_Name: yuki_01
   m_TagString: yuki
@@ -94,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827607940962930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.73, y: 0, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 4004248202327504}
@@ -102,12 +101,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61768275657648248
-BoxCollider2D:
+--- !u!60 &60951030724696308
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1398574910237576}
+  m_GameObject: {fileID: 1827607940962930}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -117,38 +116,24 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.63, y: 15.22}
-    newSize: {x: 0.63, y: 15.22}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.63, y: 15.22}
-  m_EdgeRadius: 0
---- !u!68 &68888435432638114
-EdgeCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956985416436858}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
   m_Points:
-  - {x: -4.15366, y: 2.4029121}
-  - {x: -0.0015238919, y: 4.8058524}
-  - {x: 4.155447, y: 2.4031744}
-  - {x: 4.160187, y: -2.4266026}
-  - {x: 0.0020277498, y: -4.8090944}
-  - {x: -4.140332, y: -2.3459487}
-  - {x: -4.1607003, y: 2.4029121}
+    m_Paths:
+    - - {x: 0.11317888, y: 4.774124}
+      - {x: 0.10292211, y: 73.90591}
+      - {x: -0.10591665, y: 73.90474}
+      - {x: -0.12955664, y: 4.6988525}
+      - {x: -4.189685, y: 2.405389}
+      - {x: -4.2196507, y: -2.4197617}
+      - {x: 0.012416839, y: -4.868742}
+      - {x: 4.1351047, y: -2.430709}
+      - {x: 4.1838546, y: 2.448846}
 --- !u!114 &114211762054162284
 MonoBehaviour:
   m_ObjectHideFlags: 1

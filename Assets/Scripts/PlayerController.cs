@@ -6,28 +6,28 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 1.0f;
     public float jumpSpeed = 1.0f;
-    private Vector3 originPosition;
+    public float rotateAngle = 60.0f;
     private Rigidbody2D rigidBody2D;
+    private GameManager gameManager;
 
     private void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
-
-        originPosition = transform.position;
-        if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
+        if (!gameManager.GetIsGameEnd())
         {
-            Debug.Log("JUMP");
-            rigidBody2D.AddForce(Vector3.up * Time.deltaTime * jumpSpeed);
+            transform.Rotate(Vector3.back, rotateAngle * Time.deltaTime, Space.World);
+        
+            if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("JUMP");
+                rigidBody2D.AddForce(Vector3.up * Time.deltaTime * jumpSpeed);
+            }
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.collider.name);
     }
 
 }
