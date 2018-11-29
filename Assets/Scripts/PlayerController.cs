@@ -5,17 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public float speed = 1.0f;
+    public float jumpSpeed = 1.0f;
+    private Vector3 originPosition;
+    private Rigidbody2D rigidBody2D;
 
     private void Start()
     {
-        Debug.Log("Camera fieldOfView: " + Camera.main.fieldOfView);
-        Debug.Log("frustumHeight: " + 2.0f * 10 * Mathf.Tan(Camera.main.fieldOfView * 0.5f * Mathf.Deg2Rad));
-        Debug.Log("Play position: " + transform.position + Camera.main.WorldToViewportPoint(transform.position) + Camera.main.WorldToViewportPoint(new Vector3(1,0,-10)));
+        rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        Vector3 originPosition = transform.position;
-        transform.position = new Vector3(originPosition.x - speed * Time.deltaTime, originPosition.y, originPosition.z);
+        originPosition = transform.position;
+        if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("JUMP");
+            rigidBody2D.AddForce(Vector3.up * Time.deltaTime * jumpSpeed);
+        }
     }
+
 }

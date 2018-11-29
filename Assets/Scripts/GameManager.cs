@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour {
         if (null != yuki_2) yukis.Add(yuki_2);
         if (null != yuki_3) yukis.Add(yuki_3);
         if (null != yuki_4) yukis.Add(yuki_4);
-        // Instantiate(RandomYuki(), new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     // Update is called once per frame

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - yukiAbove
   - yukiBelow
+  - yuki
   layers:
   - Default
   - TransparentFX
