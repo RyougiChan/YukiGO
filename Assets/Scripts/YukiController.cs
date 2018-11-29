@@ -7,8 +7,12 @@ public class YukiController : MonoBehaviour {
     public float speed = 1.0f;
     public float rotateSpeed = 1.0f;
     public float instantiateViewportDistance = 0.5f;
+    public float unitScore = 1.0f;
+    public GameObject player;
+
     private GameManager gameManager;
     private bool hasInstantiateYuki;
+    private bool hasAddScore;
     private GameObject yuki;
 
     void Start()
@@ -21,6 +25,12 @@ public class YukiController : MonoBehaviour {
     {
         Vector3 originPos = transform.position;
         Vector3 viewportPos = Camera.main.WorldToViewportPoint(originPos);
+        // Score++
+        if(!hasAddScore && gameObject.tag == "yukiAbove" && gameObject.transform.position.x < player.transform.position.x)
+        {
+            gameManager.SetScore(gameManager.GetScore() + unitScore);
+            hasAddScore = true;
+        }
         // Create a new gameobject using prefab.
         if (!hasInstantiateYuki && viewportPos.x < instantiateViewportDistance && gameObject.tag == "yukiAbove")
         {

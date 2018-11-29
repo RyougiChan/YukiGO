@@ -14,14 +14,20 @@ public class PlayerController : MonoBehaviour {
         rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+
         originPosition = transform.position;
         if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
         {
             Debug.Log("JUMP");
             rigidBody2D.AddForce(Vector3.up * Time.deltaTime * jumpSpeed);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.collider.name);
     }
 
 }
