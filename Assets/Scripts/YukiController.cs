@@ -8,18 +8,23 @@ public class YukiController : MonoBehaviour {
     public float rotateSpeed = 1.0f;
     public float instantiateViewportDistance = 0.5f;
     public float unitScore = 1.0f;
-    public GameObject player;
+    public float yukiInstantiateDistance;
 
     private GameManager gameManager;
     private bool hasInstantiateYuki;
     private bool hasAddScore;
     private GameObject yuki;
     private bool isGameEnd;
+    private GameObject player;
+    public Dictionary<string, Vector3> cameraViewportWorldPos;
 
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         yuki = transform.GetChild(1).gameObject;
+        cameraViewportWorldPos = gameManager.cameraViewportWorldPos;
+        yukiInstantiateDistance = gameManager.yukiInstantiateDistance;
+        player = gameManager.player;
     }
 
     void FixedUpdate()
@@ -35,8 +40,11 @@ public class YukiController : MonoBehaviour {
             hasAddScore = true;
         }
         // Create a new gameobject using prefab.
-        if (!hasInstantiateYuki && viewportPos.x < instantiateViewportDistance && gameObject.tag == "yukiAbove")
-        {
+        if (!hasInstantiateYuki && originPos.x < cameraViewportWorldPos["tr"].x - yukiInstantiateDistance && gameObject.tag == "yukiAbove")
+        //if (!hasInstantiateYuki && viewportPos.x < instantiateViewportDistance && gameObject.tag == "yukiAbove")
+            {
+            Debug.Log("tr.x=" + cameraViewportWorldPos["tr"].x + " x="+originPos.x);
+            Debug.Log("tr: "+cameraViewportWorldPos["tr"] +" pos: "+ originPos);
             gameManager.InstantiateYuki();
             hasInstantiateYuki = true;
         }

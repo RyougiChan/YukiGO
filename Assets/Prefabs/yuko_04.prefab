@@ -179,7 +179,7 @@ MonoBehaviour:
   rotateSpeed: 1
   instantiateViewportDistance: 0.5
   unitScore: 1
-  player: {fileID: 1311822512143944, guid: 9675b701c0ec1a34e88191054b107390, type: 2}
+  yukiInstantiateDistance: 1.4
 --- !u!212 &212049222230897994
 SpriteRenderer:
   m_ObjectHideFlags: 1
