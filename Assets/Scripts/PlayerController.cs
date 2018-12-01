@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 1.0f;
     public float jumpSpeed = 1.0f;
-    public float rotateAngle = 60.0f;
+    public float rotateAngle = 90.0f;
     private Rigidbody2D rigidBody2D;
     private GameManager gameManager;
 
@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0))
             {
                 Debug.Log("JUMP");
-                rigidBody2D.AddForce(Vector3.up * Time.deltaTime * jumpSpeed);
+                // rigidBody2D.AddForce(Vector3.up * Time.deltaTime * jumpSpeed);
+                rigidBody2D.velocity = Vector2.up * jumpSpeed;
             }
         }
     }

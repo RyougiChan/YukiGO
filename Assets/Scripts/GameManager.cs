@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour {
     public float designHeight = 10.0f;
     public float distance = -3.2f;
     public float cameraDistance = 10.0f;
-    public float[] range = new float[] { 0.4f, 0.6f };
-    public float yukiInstantiateDistance = 1.4f;
+    public float[] range = new float[] { 0f, 1.0f };
+    public float yukiInstantiateDistance = 2.0f;
     public GameObject yuki_1;
     public GameObject yuki_2;
     public GameObject yuki_3;
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     public float score;
     public Text scoreText;
     public Text gameoverScoreText;
+    public GameObject playPanel;
     public GameObject gameoverPanel;
     private float screenWidth; // width of screen in pixel
     private float screenHeight; // height of screen in pixel
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour {
         screenHeight = Screen.height;
         aspectRatio = screenWidth * 1.0f / screenHeight;
         cameraWidth = Camera.main.orthographicSize * 2 * aspectRatio;
-        if(cameraWidth < designWidth)
+        if (cameraWidth > designWidth)
         {
             Camera.main.orthographicSize = designWidth / 2 / aspectRatio;
         }
@@ -67,30 +68,27 @@ public class GameManager : MonoBehaviour {
             { "br", Camera.main.ViewportToWorldPoint(new Vector3(1.0f,0f,cameraDistance)) }
         };
         // Init the first yuki
-        InstantiateYuki();
+        if(SceneManager.GetActiveScene().name != "StartScene")
+        {
+            InstantiateYuki();
+        }
     }
 
-    public void End()
-    {
-        isGameEnd = true;
-        gameoverScoreText.text = score.ToString("0");
-        gameoverPanel.SetActive(true);
-    }
-
-    public void Restart()
-    {
-        SceneManager.LoadScene("MainScene");
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
-
+    #region Game Object Control
     public void InstantiateYuki()
     {
         float ry = Random.Range(range[0], range[1]);
-        Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(1.2f,ry, 10f));
+        Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(1.2f, ry, 10f));
+        Debug.Log(cameraViewportWorldPos["tr"] + " " + pos);
+        if(pos.y + 0.8f > cameraViewportWorldPos["tr"].y)
+        {
+            pos.y = pos.y - 1.0f;
+        }
+        else if (pos.y - Mathf.Abs(distance) - 0.8f < cameraViewportWorldPos["br"].y)
+        {
+            pos.y = pos.y + Mathf.Abs(distance) + 1.0f;
+        }
+        Debug.Log(cameraViewportWorldPos["tr"] + " " + pos);
         Vector3 posReverse = new Vector3(pos.x, pos.y + distance, pos.z);
         GameObject yukiAbove = Instantiate(RandomYuki(), pos, Quaternion.identity);
         GameObject yukiBelow = Instantiate(RandomYuki(), posReverse, Quaternion.identity);
@@ -107,6 +105,9 @@ public class GameManager : MonoBehaviour {
         return yukis[index];
     }
 
+    #endregion
+
+    #region Getter & Setter
     public void SetScore(float score)
     {
         this.score = score;
@@ -126,5 +127,35 @@ public class GameManager : MonoBehaviour {
     {
         return isGameEnd;
     }
+    #endregion
+
+    #region Game Handler
+    public void Play()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    public void BackToMain()
+    {
+        SceneManager.LoadScene("StartScene");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void End()
+    {
+        isGameEnd = true;
+        gameoverScoreText.text = score.ToString("0");
+        gameoverPanel.SetActive(true);
+    }
+    #endregion
 
 }
