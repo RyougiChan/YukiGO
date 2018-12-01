@@ -13,11 +13,7 @@ My first 2D game made by Unity. It's similar to the bonus scene in Android 5 and
 
 ## Preview
 
-<div style="width:100%;">
-    <img src="build/dev_build_sample_01.png" alt="Game Start Scene" style="width:30%">
-    <img src="build/dev_build_sample_02.png" alt="Game In Scene" style="width:30%">
-    <img src="build/dev_build_sample_03.png" alt="Game Over Scene" style="width:30%">
-</div>
+![Preview](build/dev-build-preview.png)
 
 ## Releases
 
