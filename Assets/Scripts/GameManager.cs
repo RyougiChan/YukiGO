@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Model;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Newtonsoft.Json;
+using System.Text.RegularExpressions;
+using System;
+using System.Linq;
 
 public class GameManager : MonoBehaviour {
 
@@ -26,10 +31,14 @@ public class GameManager : MonoBehaviour {
     public Text gameoverScoreText;
     public GameObject playPanel;
     public GameObject gameoverPanel;
+    public GameObject rankingListPanel;
     private float screenWidth; // width of screen in pixel
     private float screenHeight; // height of screen in pixel
     private float aspectRatio; // ratio od width to height
     private float cameraWidth;
+    private RectTransform[] rts;
+    private List<RectTransform> scoreRts;
+    private List<Score> rankingList;
 
     // Use this for initialization
     void Start()
@@ -72,12 +81,23 @@ public class GameManager : MonoBehaviour {
         {
             InstantiateYuki();
         }
+        rts = rankingListPanel.GetComponentsInChildren<RectTransform>();
+        scoreRts = new List<RectTransform>();
+        foreach (RectTransform rt in rts)
+        {
+            if(rt.tag == "scoreItem_score")
+            {
+                scoreRts.Add(rt);
+            }
+        }
+        rankingList = new List<Score>();
     }
 
     #region Game Object Control
+    // To instantiate a yuki object
     public void InstantiateYuki()
     {
-        float ry = Random.Range(range[0], range[1]);
+        float ry = UnityEngine.Random.Range(range[0], range[1]);
         Vector3 pos = Camera.main.ViewportToWorldPoint(new Vector3(1.2f, ry, 10f));
         Debug.Log(cameraViewportWorldPos["tr"] + " " + pos);
         if(pos.y + 0.8f > cameraViewportWorldPos["tr"].y)
@@ -101,8 +121,54 @@ public class GameManager : MonoBehaviour {
     // Get a random yuki in yuki's list
     GameObject RandomYuki()
     {
-        int index = Mathf.RoundToInt(Random.Range(0, 3));
+        int index = Mathf.RoundToInt(UnityEngine.Random.Range(0, 3));
         return yukis[index];
+    }
+
+    // Update the ranking list
+    public void UpdateRankingList(string score)
+    {
+        Debug.Log("Score = " + score);
+        Score newScore = new Score(score);
+        string rankingListJson = PlayerPrefs.GetString("RankingList");
+        if (string.IsNullOrEmpty(rankingListJson))
+        {
+            Debug.Log("case 0");
+            List<Score> tmpRankingList = new List<Score>() { newScore };
+            rankingListJson = JsonConvert.SerializeObject(tmpRankingList);
+            rankingList = tmpRankingList;
+        }
+        else
+        {
+            Debug.Log("case 1");
+            rankingList = JsonConvert.DeserializeObject<List<Score>>(rankingListJson);
+            rankingList.Add(newScore);
+        }
+        // Add empty item
+        if (rankingList.Count < scoreRts.Count)
+        {
+            int num = scoreRts.Count - rankingList.Count;
+            for (int k = 0; k < num; k++)
+            {
+                rankingList.Add(new Score("0"));
+            }
+        }
+        // Sort by score.value asc
+        rankingList.Sort();
+        // Reverse to sort by desc
+        rankingList.Reverse();
+        Debug.Log("rankingList: " + JsonConvert.SerializeObject(rankingList));
+        // Prefs
+        List<Score> newRankingList = Enumerable.Range(0, 5).Select(c => rankingList[c]).ToList();
+        Debug.Log("newRankingList: " + JsonConvert.SerializeObject(newRankingList));
+        PlayerPrefs.SetString("RankingList", JsonConvert.SerializeObject(newRankingList));
+
+        Debug.Log(JsonConvert.SerializeObject(rankingList));
+        foreach (RectTransform rt in scoreRts)
+        {
+            int index = Convert.ToInt32(Regex.Match(rt.name, @"\d+").Value);
+            rt.GetComponent<Text>().text = rankingList[index - 1].value;
+        }
     }
 
     #endregion
@@ -143,6 +209,17 @@ public class GameManager : MonoBehaviour {
     public void BackToMain()
     {
         SceneManager.LoadScene("StartScene");
+    }
+
+    public void ShowRankingList()
+    {
+        UpdateRankingList(score.ToString("0"));
+        rankingListPanel.SetActive(true);
+    }
+
+    public void HideRankingList()
+    {
+        rankingListPanel.SetActive(false);
     }
 
     public void Quit()
