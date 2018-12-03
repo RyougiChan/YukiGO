@@ -213,7 +213,6 @@ public class GameManager : MonoBehaviour {
 
     public void ShowRankingList()
     {
-        UpdateRankingList(score.ToString("0"));
         rankingListPanel.SetActive(true);
     }
 
@@ -229,9 +228,14 @@ public class GameManager : MonoBehaviour {
 
     public void End()
     {
+        // Set game status to end
         isGameEnd = true;
+        // Set final score
         gameoverScoreText.text = score.ToString("0");
+        // Set Game Over Panel active
         gameoverPanel.SetActive(true);
+        // Update Score List
+        UpdateRankingList(score.ToString("0"));
     }
     #endregion
 
