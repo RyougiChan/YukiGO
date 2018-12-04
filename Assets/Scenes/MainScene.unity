@@ -784,8 +784,8 @@ GameObject:
   - component: {fileID: 712859000}
   - component: {fileID: 712858999}
   m_Layer: 5
-  m_Name: Score_Date
-  m_TagString: Untagged
+  m_Name: Score_Date_3
+  m_TagString: scoreItem_date
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1235,8 +1235,8 @@ GameObject:
   - component: {fileID: 1080814858}
   - component: {fileID: 1080814857}
   m_Layer: 5
-  m_Name: Score_Date
-  m_TagString: Untagged
+  m_Name: Score_Date_2
+  m_TagString: scoreItem_date
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1798,8 +1798,8 @@ GameObject:
   - component: {fileID: 1417480456}
   - component: {fileID: 1417480455}
   m_Layer: 5
-  m_Name: Score_Date
-  m_TagString: Untagged
+  m_Name: Score_Date_5
+  m_TagString: scoreItem_date
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2106,8 +2106,8 @@ GameObject:
   - component: {fileID: 1582917420}
   - component: {fileID: 1582917419}
   m_Layer: 5
-  m_Name: Score_Date
-  m_TagString: Untagged
+  m_Name: Score_Date_1
+  m_TagString: scoreItem_date
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2714,8 +2714,8 @@ GameObject:
   - component: {fileID: 2070516044}
   - component: {fileID: 2070516043}
   m_Layer: 5
-  m_Name: Score_Date
-  m_TagString: Untagged
+  m_Name: Score_Date_4
+  m_TagString: scoreItem_date
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

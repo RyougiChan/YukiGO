@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour {
     private float cameraWidth;
     private RectTransform[] rts;
     private List<RectTransform> scoreRts;
+    private List<RectTransform> dateRts;
     private List<Score> rankingList;
 
     // Use this for initialization
@@ -83,11 +84,16 @@ public class GameManager : MonoBehaviour {
         }
         rts = rankingListPanel.GetComponentsInChildren<RectTransform>();
         scoreRts = new List<RectTransform>();
+        dateRts = new List<RectTransform>();
         foreach (RectTransform rt in rts)
         {
-            if(rt.tag == "scoreItem_score")
+            if (rt.tag == "scoreItem_score")
             {
                 scoreRts.Add(rt);
+            }
+            if (rt.tag == "scoreItem_date")
+            {
+                dateRts.Add(rt);
             }
         }
         rankingList = new List<Score>();
@@ -128,19 +134,16 @@ public class GameManager : MonoBehaviour {
     // Update the ranking list
     public void UpdateRankingList(string score)
     {
-        Debug.Log("Score = " + score);
-        Score newScore = new Score(score);
+        Score newScore = new Score(score, DateTime.Now);
         string rankingListJson = PlayerPrefs.GetString("RankingList");
         if (string.IsNullOrEmpty(rankingListJson))
         {
-            Debug.Log("case 0");
             List<Score> tmpRankingList = new List<Score>() { newScore };
             rankingListJson = JsonConvert.SerializeObject(tmpRankingList);
             rankingList = tmpRankingList;
         }
         else
         {
-            Debug.Log("case 1");
             rankingList = JsonConvert.DeserializeObject<List<Score>>(rankingListJson);
             rankingList.Add(newScore);
         }
@@ -150,14 +153,13 @@ public class GameManager : MonoBehaviour {
             int num = scoreRts.Count - rankingList.Count;
             for (int k = 0; k < num; k++)
             {
-                rankingList.Add(new Score("0"));
+                rankingList.Add(new Score("0", DateTime.Now));
             }
         }
         // Sort by score.value asc
         rankingList.Sort();
         // Reverse to sort by desc
         rankingList.Reverse();
-        Debug.Log("rankingList: " + JsonConvert.SerializeObject(rankingList));
         // Prefs
         List<Score> newRankingList = Enumerable.Range(0, 5).Select(c => rankingList[c]).ToList();
         Debug.Log("newRankingList: " + JsonConvert.SerializeObject(newRankingList));
@@ -168,6 +170,12 @@ public class GameManager : MonoBehaviour {
         {
             int index = Convert.ToInt32(Regex.Match(rt.name, @"\d+").Value);
             rt.GetComponent<Text>().text = rankingList[index - 1].value;
+        }
+        foreach (RectTransform rt2 in dateRts)
+        {
+            Debug.Log(rt2.name);
+            int index = Convert.ToInt32(Regex.Match(rt2.name, @"\d+").Value);
+            rt2.GetComponent<Text>().text = rankingList[index - 1].time.ToString("yyyy-MM-dd");
         }
     }
 
