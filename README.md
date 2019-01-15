@@ -1,6 +1,6 @@
 # YukiGO
 
-My first 2D game made by Unity. It's similar to the bonus scene in Android 5 and 6 systems, which trigger by clicking 5 times on the system version number in the setting.
+My first 2D game made by Unity. It's similar to the bonus scene in Android 5 and 6 systems, which trigger by clicking 5 times on the system version number in the setting menu.
 
 ## Tools
 
